@@ -1,5 +1,12 @@
 package scheduler;
 
+import java.util.Scanner;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /*
  * Objective: Create a weekly scheduling application.
  * 
@@ -26,6 +33,39 @@ package scheduler;
 public class Scheduler {
 
     public static void main(String[] args) {
+//    	JFrame frame = new JFrame();
+//    	JPanel panel = new JPanel();
+    	Days[] daysOfWeekArr = Days.values();
+    	
+    	Scanner scan = new Scanner(System.in);
+//    	for(int i = 0; i < 7; i++) {
+//    		JButton button = new JButton(daysOfWeekArr[i].toString());
+//    		
+//    		panel.add(button);
+//    	}
+//    	
+//    	frame.setVisible(true);
+//    	System.out.println("Do you want to add, view, or remove events?");
+//    	String choice = scan.nextLine();
+//    	System.out.println("What day?");
+//    	String dayChoice = scan.nextLine();
+    	String dayChoice = JOptionPane.showInputDialog("What day do you want to edit?");
+    	String choice = JOptionPane.showInputDialog("What do you want to do? (add, view, or remove)");
+    	for(int i =0; i < daysOfWeekArr.length; i++) {
+    		if(dayChoice.equals(daysOfWeekArr[i].toString())) {
+    			if(choice.equals("add")) {
+    				String whatAdd = JOptionPane.showInputDialog("What do you want to add?");
+    				daysOfWeekArr[i].addEvent(whatAdd);
+    			}
+    			else if(choice.equals("view")) {
+    				
+    			}
+    			else {
+    				
+    			}
+    		}
+    		
+    	}
 
     }
 }
