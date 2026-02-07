@@ -1,10 +1,21 @@
 package scheduler;
 
 public class Event {
-	public String event;
+	private String event;
+	private Integer time;
 	
-	Event(){
-		
+	Event(String event, Integer time){
+		this.event = event;
+		this.time = time;
 	}
+	public String getEvent() {
+		
+		return event;
+	}
+	
+	public int getTime() {
+		return time;
+	}
+	
 	
 }

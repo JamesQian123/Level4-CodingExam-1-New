@@ -1,26 +1,38 @@
 package scheduler;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+
 public enum Days {
 	MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
-	
-	LinkedList<Event> eventList = new LinkedList();
-	LinkedList<Time> timeList = new LinkedList();
-	
-		
-	public void addEvent(Event event) {
-		eventList.add(event);
-		
+
+	TreeMap<Integer, Event> map = new TreeMap();
+	public void addEvent(Event event, int time) {
+		map.put(time, event);
 	}
 	public void viewEvent() {
 		
 	}
 	
-	public static Event getEvent() {
-		return null;
-		
+	public Event getEvent() {
+		Event event;
+		for(int time: map.keySet()) {
+			event = map.get(time);
+		}
+		return event;
 	}
-	public void removeEvent() {
-		
+	public void removeEvent(Event event, int time) {
+		map.rem
+	}
+	@SuppressWarnings("unlikely-arg-type")
+	public int getTime(Event event) {
+		for(int i =0; i < planner.size(); i++) {
+			if(planner.get(i).equals(event.getEvent())) {
+				return planner.get(event);
+			}
+		}
+		return 0;
 	}
 
 }

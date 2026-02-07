@@ -55,7 +55,10 @@ public class Scheduler {
     		if(dayChoice.equals(daysOfWeekArr[i].toString())) {
     			if(choice.equals("add")) {
     				String whatAdd = JOptionPane.showInputDialog("What do you want to add?");
-    				daysOfWeekArr[i].addEvent(whatAdd);
+    				String whatTime = JOptionPane.showInputDialog("What time?");
+    				int time = Integer.parseInt(whatTime);
+    				Event event = new Event(whatAdd,time);
+    				daysOfWeekArr[i].addEvent(event, time);
     			}
     			else if(choice.equals("view")) {
     				
