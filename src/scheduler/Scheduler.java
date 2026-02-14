@@ -49,26 +49,44 @@ public class Scheduler {
 //    	String choice = scan.nextLine();
 //    	System.out.println("What day?");
 //    	String dayChoice = scan.nextLine();
-    	String dayChoice = JOptionPane.showInputDialog("What day do you want to edit?");
-    	String choice = JOptionPane.showInputDialog("What do you want to do? (add, view, or remove)");
-    	for(int i =0; i < daysOfWeekArr.length; i++) {
-    		if(dayChoice.equals(daysOfWeekArr[i].toString())) {
-    			if(choice.equals("add")) {
-    				String whatAdd = JOptionPane.showInputDialog("What do you want to add?");
-    				String whatTime = JOptionPane.showInputDialog("What time?");
-    				int time = Integer.parseInt(whatTime);
-    				Event event = new Event(whatAdd,time);
-    				daysOfWeekArr[i].addEvent(event, time);
-    			}
-    			else if(choice.equals("view")) {
-    				
-    			}
-    			else {
-    				
-    			}
-    		}
-    		
-    	}
-
-    }
+    	boolean notDone = true;
+	    while(notDone) {
+	    	String dayChoice = JOptionPane.showInputDialog("What day do you want to edit or leave?");
+	    	if(dayChoice.equals("leave")) {
+	    		break;
+	    	}
+	    	String choice = JOptionPane.showInputDialog("What do you want to do? (add, view, or remove)");
+	    	Event event = null;
+	    	
+	    	for(int i =0; i < daysOfWeekArr.length; i++) {
+	    		if(dayChoice.equals(daysOfWeekArr[i].toString())) {
+	    			if(choice.equals("add")) {
+	    				String whatAdd = JOptionPane.showInputDialog("What event do you want to add?");
+	    				String whatTime = JOptionPane.showInputDialog("What time?");
+	    				int time = Integer.parseInt(whatTime);
+	    				event = new Event(whatAdd,time);
+	    				try {
+							daysOfWeekArr[i].addEvent(event, time);
+						} catch (SchedulingConflictException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+	    			}
+	    			else if(choice.equals("view")) {  
+	    				
+	    				daysOfWeekArr[i].viewEvent();
+	    			}
+	    			else if(choice.equals("remove")){
+	    				String deleteWhat = JOptionPane.showInputDialog("What event did you want to delete");
+	    				String whatTime = JOptionPane.showInputDialog("What time");
+	    				int time = Integer.parseInt(whatTime);
+	    				daysOfWeekArr[i].removeEvent(time);
+	    			}
+	    		}
+	    		
+	    	}
+	    	
+	
+	    }
+	    }
 }
